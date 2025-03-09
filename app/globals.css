@@ -24,13 +24,13 @@
 }
 
 :root {
-  --background: #e6f2ff;
+  --background: var(--color-sky-200);
   --foreground: #171717;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #000d1a
+    --background: var(--color-sky-950);
     --foreground: #ededed;
   }
 }
