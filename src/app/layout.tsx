@@ -4,6 +4,8 @@ import "./globals.css";
 import Header from "@/components/organism/Header";
 import Footer from "@/components/organism/Footer";
 import Navigation from "@/components/organism/Navigation";
+import { ThemeProviders } from "./theme-providers";
+import SectionContainer from "@/components/dna/SectionContainer";
 
 const poppinsFonts = Poppins({weight: "400", subsets: ["latin"]})
 
@@ -21,16 +23,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="id">
-      <body
-        className={`${poppinsFonts} antialiased`}
-      >
-        <Header />
-        <Navigation />
-        <main>
-          {children}
-        </main>
-        <Footer />
+    <html lang="id-ID" className={`${poppinsFonts.className} scroll-smooth` } suppressHydrationWarning>
+      <body className="bg-white pl-[calc(100vw-100%)] text-black antialiased dark:bg-gray-950 dark:text-white">
+        <ThemeProviders>
+          <SectionContainer>
+            <Header />
+            <main className="mb-auto">{children}</main>
+            <Footer />
+          </SectionContainer>
+        </ThemeProviders>        
       </body>
     </html>
   );
