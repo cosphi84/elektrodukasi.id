@@ -1,4 +1,3 @@
-import SocialIcon from '@/components/cell/social-icons'
 import Image from '@/components/cell/image'
 import { PrismaClient } from 'generated/prisma'
 
