@@ -1,12 +1,20 @@
 import SocialIcon from '@/components/cell/social-icons'
-import Image from '../cell/image'
+import Image from '@/components/cell/image'
+import { PrismaClient } from 'generated/prisma'
 
-export default function AuthorLayout() {
+export default async function AuthorLayout() {
+  const prisma = new PrismaClient()
+  const author = await prisma.user.findUnique({
+    where: {
+      uid: 1,
+    },
+  })
+
   return (
     <>
       <div className="divide-y divide-gray-200 dark:divide-gray-700">
         <div className="space-y-2 pt-6 pb-8 md:space-y-5">
-          <h2 className="text-3xl leading-9 font-extrabold tracking-tight text-gray-900 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14 dark:text-gray-100">
+          <h2 className="leading-9 tracking-tight text-gray-900 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14 dark:text-gray-100">
             Tentangku
           </h2>
         </div>
@@ -19,20 +27,13 @@ export default function AuthorLayout() {
               height={192}
               className="mb-5 h-48 w-48 rounded-2xl shadow-2xl shadow-black dark:shadow-gray-400"
             />
-            <h3 className="pt-4 pb-2 text-2xl leading-8 font-bold tracking-tight">Risam, S.T</h3>
-            <div className="text-center text-gray-500 dark:text-gray-400">
-              Electronics Engineer, Home-App Technician, Web Programmer
-            </div>
+            <h3 className="pt-4 pb-2 text-2xl leading-8 font-bold tracking-tight">
+              {author?.real_name}
+            </h3>
+            <div className="text-center text-gray-500 dark:text-gray-400">{author?.bio}</div>
           </div>
           <div className="prose dark:prose-invert max-w-none pt-8 pb-8 text-justify xl:col-span-2">
-            <p>
-              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-              incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-              exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-              dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-              Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-              mollit anim id est laborum."
-            </p>
+            <p>{author?.description}</p>
           </div>
         </div>
       </div>
