@@ -17,7 +17,7 @@ export default function AuthorLayout() {
               alt="Risam, S.T"
               width={192}
               height={192}
-              className="mb-5 h-48 w-48 rounded-2xl shadow-2xl shadow-black"
+              className="mb-5 h-48 w-48 rounded-2xl shadow-2xl shadow-black dark:shadow-gray-400"
             />
             <h3 className="pt-4 pb-2 text-2xl leading-8 font-bold tracking-tight">Risam, S.T</h3>
             <div className="text-center text-gray-500 dark:text-gray-400">
