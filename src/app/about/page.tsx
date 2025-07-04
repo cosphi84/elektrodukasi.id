@@ -1,9 +1,9 @@
-import AuthorLayout from "@/components/organism/Author";
+import AuthorLayout from '@/components/organism/Author'
 
-export default function Page(){
-    return(
-        <>
-            <AuthorLayout />
-        </>
-    )
+export default function Page() {
+  return (
+    <>
+      <AuthorLayout />
+    </>
+  )
 }
